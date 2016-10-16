@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://blabla/personservice"
+			xmlns:person="http://tfoms.ru"
+			targetNamespace="http://blabla/personservice"
+			elementFormDefault="qualified">
+
+<xsd:complexType name="Person">
+		<xsd:sequence>
+			<xsd:element name="Family" type="xsd:string"/>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="Surname" type="xsd:string"/>
+			<xsd:element name="Balance" type="xsd:double"/>
+			<xsd:element name="AccountStatus" type="EnumAccountStatus"/>
+		</xsd:sequence>
+</xsd:complexType>
+		
+	<xsd:simpleType name="EnumAccountStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Active"/>
+			<xsd:enumeration value="Inactive"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="PersonDetailsRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="surname" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PersonDetailsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="PersonDetailMethod" type="Person"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+
+</xsd:schema>
